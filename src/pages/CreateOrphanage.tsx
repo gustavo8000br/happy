@@ -9,6 +9,8 @@ import Sidebar from "../components/Sidebar";
 import mapIcon from "../utils/mapIcon";
 import api from "../services/api";
 
+const dev = true;
+
 const containerStyle = {
   width: "100%",
   height: "280px",
@@ -33,6 +35,8 @@ export default function CreateOrphanage() {
   const [images, setImages] = useState<File[]>([]);
   const [previewImages, setPreviewImages] = useState<string[]>([]);
 
+  const [activity, setActivity] = useState(false);
+
   function handleMapClick(event: LeafletMouseEvent) {
     const { lat, lng } = event.latlng;
 
@@ -55,11 +59,30 @@ export default function CreateOrphanage() {
       return URL.createObjectURL(image);
     });
 
-    setPreviewImages(selectedImagesPreview);
+    setPreviewImages([...previewImages, ...selectedImagesPreview]);
   }
 
   async function handleSubmit(event: FormEvent) {
+    setActivity(true);
     event.preventDefault();
+
+    if (dev) console.log("Iniciando submit");
+
+    if (
+      name === "" ||
+      telephone === "" ||
+      about === "" ||
+      opening_hours === "" ||
+      images.length === 0 ||
+      position === { latitude: 0, longitude: 0 }
+    ) {
+      // FIXME - Colocar alerta em um box
+      alert("Preencha os campos obrigatorios!");
+      setActivity(false);
+      return;
+    }
+
+    if (dev) console.log("Não tem nada em branco. Contuando postagem");
 
     const { latitude, longitude } = position;
 
@@ -77,10 +100,14 @@ export default function CreateOrphanage() {
       data.append("images", image);
     });
 
+    if (dev) console.log("POSTANDO:", data);
+
     await api.post("orphanage/create", data);
 
-    alert('Cadastro realizado com sucesso!');
+    // FIXME - Colocar alerta em um box
+    alert("Cadastro realizado com sucesso!");
 
+    setActivity(false);
     history.push("/map");
   }
 
@@ -93,31 +120,40 @@ export default function CreateOrphanage() {
           <fieldset>
             <legend>Dados</legend>
 
-            <label id="mapbox-label" htmlFor="mapbox">
-              Clique no mapa para selecionar a localização do orfanato
-            </label>
-            <Map
-              center={center}
-              style={containerStyle}
-              zoom={15}
-              onClick={handleMapClick}
-              id="mapbox"
-            >
-              <TileLayer
-                url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
-              />
-
-              {position.latitude !== 0 && (
-                <Marker
-                  interactive={false}
-                  icon={mapIcon}
-                  position={[position.latitude, position.longitude]}
+            <div className="input-block">
+              <label id="mapbox-label" htmlFor="mapbox">
+                Mapa <span>*Obrigatorio</span>
+              </label>
+              <Map
+                center={center}
+                style={containerStyle}
+                zoom={15}
+                onClick={handleMapClick}
+                id="mapbox"
+              >
+                <TileLayer
+                  url={`https://api.mapbox.com/styles/v1/mapbox/light-v10/tiles/256/{z}/{x}/{y}@2x?access_token=${process.env.REACT_APP_MAPBOX_TOKEN}`}
                 />
-              )}
-            </Map>
+
+                {position.latitude !== 0 && (
+                  <Marker
+                    interactive={false}
+                    icon={mapIcon}
+                    position={[position.latitude, position.longitude]}
+                  />
+                )}
+              </Map>
+              <label id="mapbox-hint-label" htmlFor="mapbox">
+                <span>
+                  Clique no mapa para selecionar a localização do orfanato
+                </span>
+              </label>
+            </div>
 
             <div className="input-block">
-              <label htmlFor="name">Nome</label>
+              <label htmlFor="name">
+                Nome <span>*Obrigatorio</span>
+              </label>
               <input
                 id="name"
                 value={name}
@@ -127,7 +163,8 @@ export default function CreateOrphanage() {
 
             <div className="input-block">
               <label htmlFor="about">
-                Sobre <span>Máximo de 300 caracteres</span>
+                Sobre <span>Máximo de 300 caracteres</span>{" "}
+                <span>*Obrigatorio</span>
               </label>
               <textarea
                 id="name"
@@ -139,7 +176,8 @@ export default function CreateOrphanage() {
 
             <div className="input-block">
               <label htmlFor="telephone">
-                Telefone/WhatsApp <span>(Ex: 11912345678)</span>
+                Telefone/WhatsApp <span>(Ex: 11912345678)</span>{" "}
+                <span>*Obrigatorio</span>
               </label>
               <input
                 id="telephone"
@@ -148,8 +186,11 @@ export default function CreateOrphanage() {
               />
             </div>
 
+            {/* // NOTE Adicionar botão de remover imagens */}
             <div className="input-block">
-              <label htmlFor="images">Fotos</label>
+              <label htmlFor="images">
+                Fotos <span>*Obrigatorio</span>
+              </label>
 
               <div className="images-container">
                 {previewImages.map((image) => {
@@ -182,7 +223,9 @@ export default function CreateOrphanage() {
             </div>
 
             <div className="input-block">
-              <label htmlFor="opening_hours">Horário de funcionamento</label>
+              <label htmlFor="opening_hours">
+                Horário de funcionamento <span>*Obrigatorio</span>
+              </label>
               <input
                 id="opening_hours"
                 value={opening_hours}
@@ -212,7 +255,7 @@ export default function CreateOrphanage() {
             </div>
           </fieldset>
 
-          <button className="confirm-button" type="submit">
+          <button className="confirm-button" type="submit" disabled={activity}>
             Confirmar
           </button>
         </form>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { FaWhatsapp } from "react-icons/fa";
 import { FiClock, FiInfo } from "react-icons/fi";
 import { Map, TileLayer, Marker } from "react-leaflet";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 
 import Sidebar from "../components/Sidebar";
 import Loading from "../components/Loading";
@@ -42,15 +42,28 @@ export default function Orphanage() {
   const [orphanage, setOrphanage] = useState<Orphanage>();
   const [activeImageIndex, setActiveImageIndex] = useState(0);
 
+  const history = useHistory();
+
   useEffect(() => {
-    api.get(`orphanage/${params.id}`).then((response) => {
-      console.log("Orfanato GETzado:", response.data);
-      setOrphanage(response.data);
-    });
+    // FIXME - leva tuda do axios pra /src/services/api.ts
+    api
+      .get(`orphanage/${params.id}`)
+      .then((response) => {
+        console.log("Orfanato GETzado:", response.data);
+        if (!response.data.images[activeImageIndex]) {
+          alert("Erro: Verificar console");
+          console.log("Array de imagens do Orfanato = ", activeImageIndex);
+          history.push("/map");
+        }
+        setOrphanage(response.data);
+      })
+      .catch(() => {
+        console.error("Erro ao tentar buscar o orfanato " + params.id);
+      });
   }, [params.id]);
 
   if (!orphanage) {
-    return <Loading/>
+    return <Loading />;
   }
 
   return (
@@ -59,25 +72,28 @@ export default function Orphanage() {
 
       <main>
         <div className="orphanage-details">
-          <img src={orphanage.images[activeImageIndex].url} alt={orphanage.name} />
+          <img
+            src={orphanage.images[activeImageIndex]?.url}
+            alt={orphanage.name}
+          />
 
           <div className="images">
             {orphanage.images.map((image, index) => {
               return (
-                <button 
-                key={image.id} 
-                className={activeImageIndex === index ? 'active' : ''} 
-                type="button"
-                onClick={() => {
-                  setActiveImageIndex(index);
-                }}
+                <button
+                  key={image.id}
+                  className={activeImageIndex === index ? "active" : ""}
+                  type="button"
+                  onClick={() => {
+                    setActiveImageIndex(index);
+                  }}
                 >
                   <img src={image.url} alt={orphanage.name} />
                 </button>
               );
             })}
           </div>
-          
+
           <div className="orphanage-details-content">
             <h1>{orphanage.name}</h1>
             <p>{orphanage.about}</p>

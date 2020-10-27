@@ -6,7 +6,7 @@ import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import logoImg from "../images/logo.svg";
 
 import "../styles/pages/orphanages-map.css";
-import api from "../services/api";
+import { getOrphanages, cancelGetOrphanages } from "../services/api";
 import mapIcon from "../utils/mapIcon";
 
 const containerStyle = {
@@ -30,9 +30,13 @@ function OrphanagesMap() {
   const [orphanages, setOrphanages] = useState<Orphanage[]>([]);
 
   useEffect(() => {
-    api.get("orphanages").then((response) => {
-      setOrphanages(response.data);
-    });
+    async function asyncEffect() {
+      const data = await getOrphanages();
+      setOrphanages(data);
+    }
+    asyncEffect();
+
+    return cancelGetOrphanages;
   }, []);
 
   return (
