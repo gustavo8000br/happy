@@ -1,0 +1,12 @@
+svg.page-orphanage-loading {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    margin: 0px 95px;
+    padding: 16px 8px;
+
+    background: linear-gradient(329.54deg, #15b6d3 0%, #15d6f0b2 100%);
+
+    display: flex;
+    align-items: center;
+}

@@ -63,7 +63,12 @@ export default function Orphanage() {
   }, [params.id]);
 
   if (!orphanage) {
-    return <Loading />;
+    return (
+      <div id="page-orphanage-loading">
+        <Sidebar />
+        <Loading />
+      </div>
+    );
   }
 
   return (
