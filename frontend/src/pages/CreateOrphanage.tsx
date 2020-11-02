@@ -24,6 +24,21 @@ const center = {
 export default function CreateOrphanage() {
   const history = useHistory();
 
+  const [alertOpen, setAlertOpen] = React.useState(false);
+  const [fieldIsEmpty, setFieldIsEmpty] = React.useState(false);
+
+  const handleField = () => {
+    setFieldIsEmpty(true);
+  };
+
+  const handleAlert = () => {
+    setAlertOpen(true);
+  };
+  
+  const handleClose = () => {
+    setAlertOpen(false);
+  };
+
   const [position, setPosition] = useState({ latitude: 0, longitude: 0 });
 
   const [name, setName] = useState("");
@@ -77,7 +92,8 @@ export default function CreateOrphanage() {
       position === { latitude: 0, longitude: 0 }
     ) {
       // FIXME - Colocar alerta em um box
-      alert("Preencha os campos obrigatorios!");
+      // alert("Preencha os campos obrigatorios!");
+      // handleField
       setActivity(false);
       return;
     }

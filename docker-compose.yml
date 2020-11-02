@@ -1,0 +1,20 @@
+version: "2"
+
+services:
+  happy-frontend:
+    image: gustavo8000br/happy-frontend:dev
+    build: ./frontend/.
+    ports:
+      - "80:3000"
+    volumes:
+      - ./frontend:/frontend
+    links:
+      - happy-backend
+  happy-backend:
+    image: gustavo8000br/happy-backend:dev
+    build: ./backend/.
+    ports:
+      - "3333:3000"
+    volumes:
+      - ./backend:/backend
+  
