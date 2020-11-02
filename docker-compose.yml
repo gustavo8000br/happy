@@ -1,9 +1,10 @@
-version: "2"
+version: "3"
 
 services:
   happy-frontend:
     image: gustavo8000br/happy-frontend:dev
     build: ./frontend/.
+    command: yarn start
     ports:
       - "80:3000"
     volumes:
@@ -13,6 +14,7 @@ services:
   happy-backend:
     image: gustavo8000br/happy-backend:dev
     build: ./backend/.
+    command: yarn dev
     ports:
       - "3333:3000"
     volumes:
