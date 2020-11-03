@@ -8,7 +8,6 @@ Site que reuni varios orfanatos
 
 ### Em andamento
 
-- [ ] Implementar um comando basico para rodar em segundo plano os serviços  
 
 ### Concluído ✓
 

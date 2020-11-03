@@ -6,16 +6,9 @@
 
 ## Passos necessários para executar o codigo
 
-- Criar os arquivos **``.env``** dentro das pastas **``backend``** e **``frontend``**
+- Criar o arquivo **``.env``**
 
-  **.env** da pasta **``backend``**
-
-    ```.env
-    PORT=3000
-    HOST=localhost
-    ```
-
-  **.env** da pasta **``frontend``**
+  **.env**
 
     ```.env
     REACT_APP_MAPBOX_TOKEN=seutoken
@@ -28,8 +21,8 @@
 - Executar no terminal, na pasta raiz do projeto:
 
 ```bash
-./run-backend.sh
-./run-frontend.sh
+yarn # Para instalar as dependencias do projeto
+yarn start # Para rodar o servidor do frontend
 ```
 
 ## Mais implementações serão adicionadas no futuro veja a lista de [TODO](TODO.md)
