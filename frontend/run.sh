@@ -28,7 +28,7 @@ while getopts :${OPTS} i ; do
     case $i in
     1)
       echo "Iniciando servidor de desenvolvimento!"
-      nohup DEBUG=* yarn dev > /dev/null 2>logs/run-dev.log &;;
+      nohup yarn dev > /dev/null 2>logs/run-dev.log &;;
     2)
       echo "Iniciando testes!"
       nohup yarn test > /dev/null 2>logs/run-tests.log &;;
