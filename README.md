@@ -21,8 +21,8 @@ ___
     ```.env
     REACT_APP_MAPBOX_TOKEN=seutoken
     PORT=3000
-    HOST=localhost
-    BACKEND_HOST=localhost
+    PUBLIC_URL=localhost
+    BACKEND_URL=localhost
     BACKEND_PORT=3333
     ```
 

@@ -1,9 +1,11 @@
 import axios from "axios";
 import { Canceler } from "axios";
 
+const BACKEND_PORT = parseInt(process.env.BACKEND_PORT || "3333", 10);
+const BACKEND_URL = process.env.BACKEND_URL || `localhost`;
+
 const api = axios.create({
-  // baseURL: `http://${process.env.BACKEND_HOST}:${process.env.BACKEND_PORT}`,
-  baseURL: "http://localhost:3333",
+  baseURL: `http://${BACKEND_URL}:${BACKEND_PORT}`,
 });
 
 export default api;

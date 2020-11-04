@@ -8,7 +8,7 @@ import CreateOrphanage from "./pages/CreateOrphanage";
 
 function Routes() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Switch>
         <Route path="/" exact component={Landing} />
         <Route path="/map" component={OrphanagesMap} />
