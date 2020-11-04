@@ -2,12 +2,12 @@
 
 ## Repositorios do Projeto
 
-- [Frontend - (Você está aqui)](https://github.com/gustavo8000br/happy/)
-- [Backend](https://github.com/gustavo8000br/backend-happy)
+- [Frontend](https://github.com/gustavo8000br/happy/tree/dev)
+- [Backend](https://github.com/gustavo8000br/backend-happy/tree/dev)
 
 ___
 
-## Requesitos do sistema
+## Requisitos do sistema
 
 - Linux/MacOS
 - Token do Mapbox - [Pegue seu token aqui](https://account.mapbox.com/)
