@@ -14,13 +14,15 @@ ___
 
 ### Para fazer
 
-- [ ] 🔒 - Colocar sitema de Autenticação  
+- [ ] ⚠️ - Colocar alertas (sucesso, erro, informação, aviso)  
 - [ ] ✈️ - Migrar do Mapbox para o Google Maps  
+- [ ] ✈️ - Migrar banco de dados para outra tecnologia mais segura  
+- [ ] 🔒 - Colocar sitema de Autenticação  
 - [ ] 🔎 - Implementar sistema de busca  
-- [ ] 🖼️ - Implementar remoção de imagens na hora do cadastro  
 
 ### Em andamento
 
+- [ ] 🖼️ - Implementar remoção de imagens na hora do cadastro  
 
 ### Concluído ✓
 
