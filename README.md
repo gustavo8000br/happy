@@ -10,7 +10,7 @@ ___
 ## Requesitos do sistema
 
 - Linux/MacOS
-- Token do Mapbox [Pegue seu token aqui](https://account.mapbox.com/)
+- Token do Mapbox - [Pegue seu token aqui](https://account.mapbox.com/)
 
 ## Passos necessários para executar o codigo
 
