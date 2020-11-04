@@ -1,8 +1,16 @@
 # Projeto Happy
 
+## Repositorios do Projeto
+
+- [Frontend - (Você está aqui)](https://github.com/gustavo8000br/happy/)
+- [Backend](https://github.com/gustavo8000br/backend-happy)
+
+___
+
 ## Requesitos do sistema
 
 - Linux/MacOS
+- Token do Mapbox [Pegue seu token aqui](https://account.mapbox.com/)
 
 ## Passos necessários para executar o codigo
 
@@ -18,7 +26,7 @@
     BACKEND_PORT=3333
     ```
 
-- Executar no terminal, na pasta raiz do projeto:
+- Execute no terminal, na pasta raiz do projeto:
 
 ```bash
 yarn # Para instalar as dependencias do projeto
