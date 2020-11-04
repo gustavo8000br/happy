@@ -7,6 +7,7 @@ Site que reuni varios orfanatos
 - [ ] 🔒 - Colocar sitema de Autenticação  
 - [ ] ✈️ - Migrar do Mapbox para o Google Maps  
 - [ ] 🔎 - Implementar sistema de busca  
+- [ ] 🖼️ - Implementar remoção de imagens na hora do cadastro  
 
 ### Em andamento
 
