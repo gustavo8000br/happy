@@ -4,12 +4,12 @@ A branch ``main`` está sem código, mude para branch [``dev``](https://github.c
 
 ## Repositorios do Projeto
 
-- [Frontend - (Você está aqui)](https://github.com/gustavo8000br/happy/)
+- [Frontend](https://github.com/gustavo8000br/happy/)
 - [Backend](https://github.com/gustavo8000br/backend-happy)
 
 ___
 
-## Requesitos do sistema
+## Requisitos do sistema
 
 - Linux/MacOS
 - Token do Mapbox - [Pegue seu token aqui](https://account.mapbox.com/)
