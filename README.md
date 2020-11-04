@@ -1,5 +1,7 @@
 # Projeto Happy
 
+A branch ``main`` está sem código, mude para branch [``dev``](https://github.com/gustavo8000br/happy/tree/dev)
+
 ## Repositorios do Projeto
 
 - [Frontend - (Você está aqui)](https://github.com/gustavo8000br/happy/)
@@ -33,4 +35,4 @@ yarn # Para instalar as dependencias do projeto
 yarn start # Para rodar o servidor do frontend
 ```
 
-## Mais implementações serão adicionadas no futuro veja a lista de [TODO](TODO.md)
+## Mais implementações serão adicionadas no futuro veja a lista de [TODO](https://github.com/gustavo8000br/happy/blob/dev/TODO.md)
