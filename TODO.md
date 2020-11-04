@@ -2,6 +2,16 @@
 
 Site que reuni varios orfanatos
 
+___
+
+## Links úteis
+
+[Ir para fronend](https://github.com/gustavo8000br/happy/)
+
+[Ir para backend](https://github.com/gustavo8000br/backend-happy)
+
+___
+
 ### Para fazer
 
 - [ ] 🔒 - Colocar sitema de Autenticação  
@@ -11,9 +21,9 @@ Site que reuni varios orfanatos
 
 ### Em andamento
 
-- [ ] 📓 - Terminar a lista de TODO  
 
 ### Concluído ✓
 
 - [x] 🐄 - O nivel da vaca é mentira  
+- [x] 📓 - Terminar a lista de TODO  
 
