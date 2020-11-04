@@ -7,7 +7,7 @@
 
 ___
 
-## Requesitos do sistema
+## Requisitos do sistema
 
 - Linux/MacOS
 - Token do Mapbox - [Pegue seu token aqui](https://account.mapbox.com/)
